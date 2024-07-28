@@ -18,6 +18,7 @@ app.use('/api/v1', routes)
 const port = process.env.PORT || 4000
 
 const server = http.createServer(app)
+mongoose.set('strictQuery', true)
 
 mongoose
   .connect(process.env.MONGODB_URL)
