@@ -14,6 +14,9 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 app.use('/api/v1', routes)
+app.get('/', (req, res) => {
+  res.send('Hello')
+})
 
 const port = process.env.PORT || 4000
 
