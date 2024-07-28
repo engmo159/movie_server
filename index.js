@@ -20,18 +20,22 @@ app.get('/', (req, res) => {
 
 const port = process.env.PORT || 4000
 
-const server = http.createServer(app)
-mongoose.set('strictQuery', true)
+// const server = http.createServer(app)
+// mongoose.set('strictQuery', true)
 
+// mongoose
+//   .connect(process.env.MONGODB_URL)
+//   .then(() => {
+//     console.log('Mongodb connected')
+//     server.listen(port, () => {
+//       console.log(`Server is listening on port ${port}`)
+//     })
+//   })
+//   .catch(err => {
+//     console.log({ err })
+//     process.exit(1)
+//   })
 mongoose
-  .connect(process.env.MONGODB_URL)
-  .then(() => {
-    console.log('Mongodb connected')
-    server.listen(port, () => {
-      console.log(`Server is listening on port ${port}`)
-    })
-  })
-  .catch(err => {
-    console.log({ err })
-    process.exit(1)
-  })
+  .connect(process.env.MONGODB_URL || '')
+  .then(() => console.log('Connected to DB!'))
+  .catch(err => console.log('Connection Error!', err))
